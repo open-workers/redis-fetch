@@ -15,18 +15,18 @@ await build({
     lib: ['esnext', 'webworker']
   },
   package: {
-    // package.json properties
-    name: 'redis-fetch',
+    name: '@openworkers/redis-fetch',
     version: Deno.args[0],
-    description: 'Your package.',
+    description: 'A simple package that interfaces Redis with HTTP.',
     author: 'OpenWorkers Contributors',
+    private: false,
     license: 'MIT',
     repository: {
       type: 'git',
-      url: 'git+https://github.com/username/repo.git'
+      url: 'git+https://github.com/open-workers/redis-fetch.git'
     },
     bugs: {
-      url: 'https://github.com/username/repo/issues'
+      url: 'https://github.com/open-workers/redis-fetch/issues'
     }
   }
 });
