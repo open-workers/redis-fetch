@@ -39,3 +39,6 @@ jobs:
 
       # - name: Run tests
       #   run: deno test -A
+
+      - name: Build package
+        run: make build
