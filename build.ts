@@ -2,6 +2,8 @@ import { build, emptyDir } from 'https://deno.land/x/dnt@0.33.0/mod.ts';
 
 await emptyDir('./npm');
 
+await Deno.copyFile('./README.md', './npm/README.md');
+
 await build({
   entryPoints: ['./main.ts'],
   declaration: true,
