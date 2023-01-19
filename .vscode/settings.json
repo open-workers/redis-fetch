@@ -1,0 +1,16 @@
+{
+  "deno.enable": true,
+  "deno.lint": true,
+  "editor.inlayHints.enabled": "offUnlessPressed",
+  "cSpell.words": [
+    "Deno",
+    "denodriver",
+    "esbuild",
+    "Interstore",
+    "outfile",
+    "psubscribe",
+    "Retriable",
+    "Stralgo",
+    "Unionstore"
+  ]
+}
