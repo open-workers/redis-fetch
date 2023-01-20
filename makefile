@@ -1,4 +1,4 @@
-VERSION=0.1.1
+VERSION=0.1.2
 
 build:
 	deno run --allow-env --allow-read --allow-write --allow-net --allow-run build.ts $(VERSION)
