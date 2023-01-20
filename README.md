@@ -1,3 +1,6 @@
+[![Build](https://img.shields.io/github/actions/workflow/status/open-workers/redis-fetch/build.yml?logo=deno&label=Package+build)](https://github.com/open-workers/redis-fetch/actions/workflows/build.yml)
+[![Npm package](https://img.shields.io/npm/v/@openworkers/redis-fetch.svg?logo=npm&logoColor=fff&label=NPM+package&color=blue)](https://www.npmjs.com/@openworkers/redis-fetch)
+
 # Redis fetch
 
 A simple package that interfaces Redis with HTTP.

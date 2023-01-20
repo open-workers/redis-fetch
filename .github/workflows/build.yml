@@ -6,7 +6,7 @@
 # This workflow will install Deno then run `deno lint` and `deno test`.
 # For more information see: https://github.com/denoland/setup-deno
 
-name: Deno
+name: Build
 
 on:
   push:
@@ -19,7 +19,8 @@ permissions:
   contents: read
 
 jobs:
-  test:
+  build:
+    name: Test and build package
     runs-on: ubuntu-latest
     steps:
       - name: Setup repo
@@ -40,10 +41,14 @@ jobs:
       # - name: Run tests
       #   run: deno test -A
 
-  build:
+      - name: Build package
+        run: make build
+
+  publish:
+    name: Publish package
     if: ${{ startsWith(github.event.ref, 'refs/tags/v') }}
     needs:
-      - test
+      - build
     runs-on: ubuntu-latest
     steps:
       - name: Setup repo
