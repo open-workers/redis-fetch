@@ -59,9 +59,6 @@ jobs:
         with:
           deno-version: v1.x
 
-      - name: Build package
-        run: make build
-
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
