@@ -44,11 +44,10 @@ jobs:
       - name: Build package
         run: make build
 
-  publish:
-    name: Publish package
+  publish-npm:
+    name: Publish package on NPM
     if: ${{ startsWith(github.event.ref, 'refs/tags/v') }}
-    needs:
-      - build
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Setup repo
@@ -69,3 +68,31 @@ jobs:
         run: make publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  publish-gpr:
+    name: Publish package on GitHub Package Registry
+    if: ${{ startsWith(github.event.ref, 'refs/tags/v') }}
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+    steps:
+      - name: Setup repo
+        uses: actions/checkout@v3
+
+      - name: Setup Deno
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: v1.x
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          registry-url: https://npm.pkg.github.com/
+
+      - name: Publish package
+        run: make publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
