@@ -22,8 +22,6 @@ export class FetchCommandExecutor implements CommandExecutor {
   private sendCommand(command: string, args?: RedisValue[]) {
     const payload = { command: [command, ...(args?.map((a) => String(a)) ?? [])].join(' ') };
 
-    console.log('->', JSON.stringify(payload));
-
     const options = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -39,17 +37,13 @@ export class FetchCommandExecutor implements CommandExecutor {
 
         return {
           value() {
-            console.log('<-', JSON.stringify(json.result));
             return json.result;
           },
           string() {
-            console.log('(string) <-', JSON.stringify(json.result));
             return String(json.result);
           },
           buffer() {
-            const buf = new TextEncoder().encode(json.result);
-            console.log(`(buffer) <- Uint8Array(${buf.length})`);
-            return buf;
+            return new TextEncoder().encode(json.result);
           }
         } as RedisReply;
       });
