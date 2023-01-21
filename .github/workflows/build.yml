@@ -71,7 +71,8 @@ jobs:
 
   publish-gpr:
     name: Publish package on GitHub Package Registry
-    if: ${{ startsWith(github.event.ref, 'refs/tags/v') }}
+    # if: ${{ startsWith(github.event.ref, 'refs/tags/v') }}
+    if: ${{ 0 }}
     needs: build
     runs-on: ubuntu-latest
     permissions:
